@@ -8,36 +8,25 @@ public class Board {
 	
 	static Random rand = new Random();
 	static Scanner scan = new Scanner(System.in);
-	ArrayList<Human>
-	gameBoard = new ArrayList<Human>(15);
+	ArrayList<Armies>
+	gameBoard = new ArrayList<Armies>(15);
 	
 	
+	Player h1 = new Player();	
+	Player c1 = new Player();
 	
-	Human h1 = new Human();	
-	Computer c1 = new Computer();
-	
-	public void deploy(ArrayList<Human> availableWhite) {
+	public void deploy(ArrayList<Armies> army) {
 		for (int i =0; i<8; i++) {
-			System.out.println("Select army:");
-			int armySlct = scan.nextInt();
-			System.out.println("Enter a position to deploy");
-			int armyPosition = scan.nextInt();
 			
-			placeArmy(gameBoard, armySlct, armyPosition, availableWhite);
-			
-			availableWhite.remove(armySlct);
-				
-			
-			System.out.println("The computer plays");
-			int computerPosition = rand.nextInt();
+		
 		}
 	}
 	
-	public void placeArmy(ArrayList<Human> gameBoard, int armySlct, int armyPosition, ArrayList<Human> availableWhite) {
+	public void placeArmy(ArrayList<Player> gameBoard, int armySlct, int armyPosition, ArrayList<Player> availableArmies) {
 		switch(armyPosition) {
 		case 1:
 			//availableWhite.get(armySlct-1);
-			gameBoard[armyPosition] = availableWhite.get(armySlct-1) ;
+			//gameBoard[armyPosition] = availableWhite.get(armySlct-1) ;
 		}
 	}
 
