@@ -14,8 +14,12 @@ import javax.swing.BorderFactory;
 import javax.swing.*;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.event.MouseInputAdapter;
 
-public class GUIforgame extends JFrame implements ActionListener, Manager{
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
+public class GUIforgame extends JFrame implements ActionListener, MouseListener {
 
 	private JPanel contentPane;
 
@@ -26,7 +30,7 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+
 					GUIforgame frame = new GUIforgame();
 					frame.setVisible(true);
 					frame.setResizable(false);
@@ -37,11 +41,13 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		});
 	}
 
+	int ArmySlct = 0;
+
 	/**
 	 * Create the frame.
 	 */
 	public GUIforgame() {
-		
+
 		int width = 90;
 		int height = 75;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,20 +56,27 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
+//		JLabel selectedSoldier = new JLabel("");
+
 		JLabel background = new JLabel("New label");
 		background.setBounds(0, 0, 1370, 650);
 		background.setHorizontalAlignment(SwingConstants.CENTER);
 		background.setIcon(new ImageIcon("./armies/backgrounddd.png"));
 		contentPane.add(background);
-		
+
 		JLabel whiteSoldier1Lbl = new JLabel("");
 		Image whiteSoldier1Icn = new ImageIcon(this.getClass().getResource("/whiteArmy1.png")).getImage();
 		Image whiteSoldier1 = whiteSoldier1Icn.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 		whiteSoldier1Lbl.setIcon(new ImageIcon(whiteSoldier1));
 		whiteSoldier1Lbl.setBounds(255, 10, 93, 69);
 		background.add(whiteSoldier1Lbl);
-		
+		whiteSoldier1Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 1;
+//				selectedSoldier.setLabelFor(whiteSoldier1Lbl);
+			}
+		});
 
 		JLabel whiteSoldier2Lbl = new JLabel("");
 		Image whiteSoldier2Icn = new ImageIcon(this.getClass().getResource("/whiteArmy2.png")).getImage();
@@ -71,6 +84,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier2Lbl.setIcon(new ImageIcon(whiteSoldier2));
 		whiteSoldier2Lbl.setBounds(355, 10, 93, 69);
 		background.add(whiteSoldier2Lbl);
+		whiteSoldier2Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 2;
+				/// selectedSoldier.setLabelFor(whiteSoldier2Lbl);
+			}
+		});
 
 		JLabel whiteSoldier3Lbl = new JLabel("");
 		Image whiteSoldier3Icn = new ImageIcon(this.getClass().getResource("/whiteArmy3.png")).getImage();
@@ -78,6 +97,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier3Lbl.setIcon(new ImageIcon(whiteSoldier3));
 		whiteSoldier3Lbl.setBounds(458, 10, 93, 69);
 		background.add(whiteSoldier3Lbl);
+		whiteSoldier3Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 3;
+				// selectedSoldier.setLabelFor(whiteSoldier3Lbl);
+			}
+		});
 
 		JLabel whiteSoldier4Lbl = new JLabel("");
 		Image whiteSoldier4Icn = new ImageIcon(this.getClass().getResource("/whiteArmy4.png")).getImage();
@@ -85,6 +110,18 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier4Lbl.setIcon(new ImageIcon(whiteSoldier4));
 		whiteSoldier4Lbl.setBounds(561, 10, 93, 69);
 		background.add(whiteSoldier4Lbl);
+//		whiteSoldier4Lbl.addMouseListener(new MouseInputAdapter() {
+//			public void mouseClicked(MouseEvent e) {
+//				ArmySlct = 4;
+////				selectedSoldier.setLabelFor(whiteSoldier4Lbl);
+//				position1.addMouseListener(new MouseInputAdapter() {
+//					public void mouseClicked(MouseEvent e) {
+//						placeArmy(1, ArmySlct, whiteSoldier1Lbl);
+//						
+//					}
+//				});
+//			}
+//		});
 
 		JLabel whiteSoldier5Lbl = new JLabel("");
 		Image whiteSoldier5Icn = new ImageIcon(this.getClass().getResource("/whiteArmy5.png")).getImage();
@@ -92,6 +129,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier5Lbl.setIcon(new ImageIcon(whiteSoldier5));
 		whiteSoldier5Lbl.setBounds(664, 10, 93, 69);
 		background.add(whiteSoldier5Lbl);
+		whiteSoldier5Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 5;
+//				selectedSoldier.setLabelFor(whiteSoldier5Lbl);
+			}
+		});
 
 		JLabel whiteSoldier6Lbl = new JLabel("");
 		Image whiteSoldier6Icn = new ImageIcon(this.getClass().getResource("/whiteArmy6.png")).getImage();
@@ -99,6 +142,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier6Lbl.setIcon(new ImageIcon(whiteSoldier6));
 		whiteSoldier6Lbl.setBounds(762, 10, 93, 69);
 		background.add(whiteSoldier6Lbl);
+		whiteSoldier6Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 6;
+//				selectedSoldier.setLabelFor(whiteSoldier6Lbl);
+			}
+		});
 
 		JLabel whiteSoldier7Lbl = new JLabel("");
 		Image whiteSoldier7Icn = new ImageIcon(this.getClass().getResource("/whiteArmy7.png")).getImage();
@@ -106,6 +155,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier7Lbl.setIcon(new ImageIcon(whiteSoldier7));
 		whiteSoldier7Lbl.setBounds(861, 10, 93, 69);
 		background.add(whiteSoldier7Lbl);
+		whiteSoldier7Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 7;
+//				selectedSoldier.setLabelFor(whiteSoldier7Lbl);
+			}
+		});
 
 		JLabel whiteSoldier8Lbl = new JLabel("");
 		Image whiteSoldier8Icn = new ImageIcon(this.getClass().getResource("/whiteArmy8.png")).getImage();
@@ -113,6 +168,12 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		whiteSoldier8Lbl.setIcon(new ImageIcon(whiteSoldier8));
 		whiteSoldier8Lbl.setBounds(958, 10, 93, 69);
 		background.add(whiteSoldier8Lbl);
+		whiteSoldier8Lbl.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ArmySlct = 8;
+//				selectedSoldier.setLabelFor(whiteSoldier8Lbl);
+			}
+		});
 
 		// black soldiers
 		JLabel blackSoldier1Lbl = new JLabel("");
@@ -170,195 +231,288 @@ public class GUIforgame extends JFrame implements ActionListener, Manager{
 		blackSoldier8Lbl.setIcon(new ImageIcon(blackSoldier8));
 		blackSoldier8Lbl.setBounds(958, 562, 93, 69);
 		background.add(blackSoldier8Lbl);
-		
+
 		int widthBoard = 89;
 		int heightBoard = 100;
 		int yBoard = 284;
-		
+		// fields of war
 		JLabel position1 = new JLabel("");
 		Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3);
 		position1.setBorder(border);
 		position1.setBounds(0, yBoard, widthBoard, heightBoard);
 		background.add(position1);
-		
+		position1.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(1, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position2 = new JLabel("");
 		position2.setBorder(border);
 		position2.setBounds(85, yBoard, widthBoard, heightBoard);
 		background.add(position2);
-		
+		position2.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(2, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position3 = new JLabel("");
 		position3.setBorder(border);
 		position3.setBounds(170, yBoard, widthBoard, heightBoard);
 		background.add(position3);
-		
+		position3.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(3, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position4 = new JLabel("");
 		position4.setBorder(border);
 		position4.setBounds(255, yBoard, widthBoard, heightBoard);
 		background.add(position4);
-		
+		position4.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(4, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position5 = new JLabel("");
 		position5.setBorder(border);
 		position5.setBounds(340, yBoard, widthBoard, heightBoard);
 		background.add(position5);
-		
+		position5.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(5, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position6 = new JLabel("");
 		position6.setBorder(border);
 		position6.setBounds(425, yBoard, widthBoard, heightBoard);
 		background.add(position6);
-		
+		position6.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(6, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position7 = new JLabel("");
 		position7.setBorder(border);
 		position7.setBounds(510, yBoard, widthBoard, heightBoard);
 		background.add(position7);
-		
+		position7.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(7, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position8 = new JLabel("");
 		position8.setBorder(border);
 		position8.setBounds(595, yBoard, widthBoard, heightBoard);
 		background.add(position8);
-		
-		
+		position8.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(8, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position9 = new JLabel("");
 		position9.setBorder(border);
 		position9.setBounds(680, yBoard, widthBoard, heightBoard);
 		background.add(position9);
-		
+		position9.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(9, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position10 = new JLabel("");
 		position10.setBorder(border);
 		position10.setBounds(765, yBoard, widthBoard, heightBoard);
 		background.add(position10);
-		
+		position10.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(10, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position11 = new JLabel("");
 		position11.setBorder(border);
 		position11.setBounds(850, yBoard, widthBoard, heightBoard);
 		background.add(position11);
-		
+		position11.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(11, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position12 = new JLabel("");
 		position12.setBorder(border);
 		position12.setBounds(935, yBoard, widthBoard, heightBoard);
 		background.add(position12);
-		
-	
+		position12.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(12, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position13 = new JLabel("");
 		position13.setBorder(border);
 		position13.setBounds(1020, yBoard, widthBoard, heightBoard);
 		background.add(position13);
+		position13.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(13, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
 		
 		JLabel position14 = new JLabel("");
 		position14.setBorder(border);
 		position14.setBounds(1105, yBoard, widthBoard, heightBoard);
 		background.add(position14);
-		
+		position14.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(14, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
+
 		JLabel position15 = new JLabel("");
 		position15.setBorder(border);
 		position15.setBounds(1190, yBoard, widthBoard, heightBoard);
 		background.add(position15);
+		position15.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(15, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
 		
+
 		JLabel position16 = new JLabel("");
 		position16.setBorder(border);
 		position16.setBounds(1275, yBoard, 80, heightBoard);
 		background.add(position16);
+		position16.addMouseListener(new MouseInputAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				placeArmy(16, ArmySlct, whiteSoldier1Lbl);
+			}
+		});
 
-		
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+// TODO Auto-generated method stub
+
 	}
-		public void moveToBoard(JLabel Armies, int i) {
-			switch(i){
-			case 1: Armies.setBounds(0, 89, 100, 284);
-			case 2: Armies.setBounds(85, 89, 100, 284);
-			case 3: Armies.setBounds(170, 89, 100, 284);
-			case 4: Armies.setBounds(255, 89, 100, 284);
-			case 5: Armies.setBounds(340, 89, 100, 284);
-			case 6: Armies.setBounds(425, 89, 100, 284);
-			case 7: Armies.setBounds(510, 89, 100, 284);
-			case 8: Armies.setBounds(595, 89, 100, 284);
-			case 9: Armies.setBounds(680, 89, 100, 284);
-			case 10: Armies.setBounds(765, 89, 100, 284);
-			case 11: Armies.setBounds(850, 89, 100, 284);
-			case 12: Armies.setBounds(935, 89, 100, 284);
-			case 13: Armies.setBounds(1020, 89, 100, 284);
-			case 14: Armies.setBounds(1105, 89, 100, 284);
-			case 15: Armies.setBounds(1190, 89, 100, 284);
-			case 16: Armies.setBounds(1275, 89, 100, 284);
-			}
-			}
 
-		@Override
-		public void draw(Graphics g) {
-			// TODO Auto-generated method stub
-			
+	public void moveToBoard(JLabel selectedSoldier, int i) {
+		switch (i) {
+		case 1:
+			selectedSoldier.setLocation(0, 295);
+			break;
+		case 2:
+			selectedSoldier.setLocation(85, 295);
+			break;
+		case 3:
+			selectedSoldier.setLocation(170, 295);
+			break;
+		case 4:
+			selectedSoldier.setLocation(255, 295);
+			break;
+		case 5:
+			selectedSoldier.setLocation(340, 295);
+			break;
+		case 6:
+			selectedSoldier.setLocation(425, 295);
+			break;
+		case 7:
+			selectedSoldier.setLocation(510, 295);
+			break;
+		case 8:
+			selectedSoldier.setLocation(595, 295);
+			break;
+		case 9:
+			selectedSoldier.setLocation(680, 295);
+			break;
+		case 10:
+			selectedSoldier.setLocation(765, 295);
+			break;
+		case 11:
+			selectedSoldier.setLocation(850, 295);
+			break;
+		case 12:
+			selectedSoldier.setLocation(935, 295);
+			break;
+		case 13:
+			selectedSoldier.setLocation(1020, 295);
+			break;
+		case 14:
+			selectedSoldier.setLocation(1105, 295);
+			break;
+		case 15:
+			selectedSoldier.setLocation(1190, 295);
+			break;
+		case 16:
+			selectedSoldier.setLocation(1272, 295);
+			break;
 		}
+	}
 
-		@Override
-		public void tick() {
-			// TODO Auto-generated method stub
-			
+	public void placeArmy(int i, int armySlct, JLabel selectedSoldier) {
+		switch (armySlct) {
+		case 1:
+			moveToBoard(selectedSoldier, i);
+		case 2:
+			moveToBoard(selectedSoldier, i);
+		case 3:
+			moveToBoard(selectedSoldier, i);
+		case 4:
+			moveToBoard(selectedSoldier, i);
+		case 5:
+			moveToBoard(selectedSoldier, i);
+		case 6:
+			moveToBoard(selectedSoldier, i);
+		case 7:
+			moveToBoard(selectedSoldier, i);
+		case 8:
+			moveToBoard(selectedSoldier, i);
 		}
+	}
 
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	public void deploy() {
 
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	}
 
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+// TODO Auto-generated method stub
 
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	}
 
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void mousePressed(MouseEvent e) {
+// TODO Auto-generated method stub
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	}
 
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+// TODO Auto-generated method stub
 
-		@Override
-		public void keyPressed(int e) {
-			// TODO Auto-generated method stub
-			
-		}
+	}
 
-		@Override
-		public void keyReleased(int e) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+// TODO Auto-generated method stub
 
-		@Override
-		public void keyTyped(int e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		}
+	}
 
+	@Override
+	public void mouseExited(MouseEvent e) {
+// TODO Auto-generated method stub
+
+	}
+}
