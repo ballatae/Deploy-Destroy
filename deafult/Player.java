@@ -103,5 +103,14 @@ public class Player {
 	public void setWhiteA8(Armies whiteA8) {
 		this.whiteA8 = whiteA8;
 	}
+	
+	public Armies getArmyByNr(int number) {
+		for(int i = 0; i < availableArmies.size(); i++) {
+			if(availableArmies.get(i).getArmyNr() == number) {
+				return availableArmies.get(i);
+			}
+		}
+		return null;
+	}
 
 }

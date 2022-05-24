@@ -3,6 +3,7 @@ package deafult;
 public class Armies {
 	private String type;
 	private int armyNr;
+	private int posOnBoard;
 	
 	
 	
@@ -10,12 +11,22 @@ public class Armies {
 		super();
 		this.type = type;
 		this.armyNr = armyNr;
+		this.posOnBoard = -1;
 	}
 	
 	
-//	public int getArmyNr() {
-//		return armyNr;
-//	}
+	public int getArmyNr() {
+		return armyNr;
+	}
+	
+	public void setPosOnBoard(int i) {
+		posOnBoard = i;
+	}
+	
+	public int getPosOnBoard() {
+		return posOnBoard;
+	}
+	
 //	public void setArmyNr(int armyNr) {
 //		this.armyNr = armyNr;
 //	}

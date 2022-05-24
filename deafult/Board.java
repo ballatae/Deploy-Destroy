@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Board extends GUIforgame{
 
-	ArrayList<Armies> gameBoard = new ArrayList<Armies>(15);
+	Armies[] gameBoard = new Armies[16];
+	private int size;
 
-
-	public Board(ArrayList<Armies> gameBoard) {
+	public Board() {
 		super();
-		this.gameBoard = gameBoard;
+		size = 0;
 	}
 	
 
@@ -21,16 +21,23 @@ public class Board extends GUIforgame{
 		return "Board [gameBoard=" + gameBoard + "]";
 	}
 
-	public ArrayList<Armies> getGameBoard() {
+	public Armies[] getGameBoard() {
 		return gameBoard;
 	}
 
-	public void setGameBoard(ArrayList<Armies> gameBoard) {
+	public void setGameBoard(Armies[] gameBoard) {
 		this.gameBoard = gameBoard;
 	}
 	
-	public void addArmy(ArrayList<Armies> gameBoard) {
-		
+	public void addArmy(Armies a, int i) {
+		if(gameBoard[i] == null) {
+			gameBoard[i] = a;
+			size++;
+		}
+	}
+	
+	public int getLength() {
+		return this.size;
 	}
 
 
