@@ -18,7 +18,7 @@ public class Board extends GUIforgame{
 
 	@Override
 	public String toString() {
-		return "Board [gameBoard=" + gameBoard + "]";
+		return "Board [gameBoard=" + gameBoard.toString() + "]";
 	}
 
 	public Armies[] getGameBoard() {
