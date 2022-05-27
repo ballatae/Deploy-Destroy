@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Board extends GUIforgame{
 
-	Armies[] gameBoard = new Armies[16];
+	Armies[] gameBoard = new Armies[17];
 	private int size;
 
 	public Board() {
