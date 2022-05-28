@@ -16,6 +16,22 @@ public class Computer {
 	ArrayList<Armies> availableBlack = new ArrayList<Armies>(
 			Arrays.asList(blackA1, blackA2, blackA3, blackA4, blackA5, blackA6, blackA7, blackA8));
 
+	public Computer() {
+		super();
+	}
+
+	public ArrayList<Armies> getAvailableBlack() {
+		return availableBlack;
+	}
+
+	public void setAvailableBlack(ArrayList<Armies> availableBlack) {
+		this.availableBlack = availableBlack;
+	}
+
+	public Armies getArmyPosition(int pos) {
+		return availableBlack.get(pos);
+	}
+
 	public Armies getBlackA1() {
 		return blackA1;
 	}
@@ -79,21 +95,14 @@ public class Computer {
 	public void setBlackA8(Armies blackA8) {
 		this.blackA8 = blackA8;
 	}
+
 	public Armies getArmyByNr(int number) {
-		for(int i = 0; i < availableBlack.size(); i++) {
-			if(availableBlack.get(i).getArmyNr() == number) {
+		for (int i = 0; i < availableBlack.size(); i++) {
+			if (availableBlack.get(i).getArmyNr() == number) {
 				return availableBlack.get(i);
 			}
-		}	
+		}
 		return null;
 	}
-//
-//	public ArrayList<Armies> getAvailableBlack() {
-//		return availableBlack;
-//	}
-//
-//	public void setAvailableBlack(ArrayList<Armies> availableBlack) {
-//		this.availableBlack = availableBlack;
-//	}
 
 }

@@ -25,15 +25,18 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 	static Random random = new Random();
 	private JPanel contentPane;
 	static Player player;
+	static Computer computer;
 	static Board board;
 	private boolean turn;
 	int ArmySlct = 0;
+	int BlackSlct = 0;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		player = new Player();
+		computer = new Computer();
 		board = new Board();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,15 +65,21 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-// JLabel selectedSoldier = new JLabel("");
+		int roundsPlayed = 0;
+		ArrayList<JLabel> whiteArmy = new ArrayList<JLabel>();
+		ArrayList<JLabel> blackArmy = new ArrayList<JLabel>();
 
 		JLabel background = new JLabel("New label");
 		background.setBounds(0, 0, 1370, 650);
 		background.setHorizontalAlignment(SwingConstants.CENTER);
 		background.setIcon(new ImageIcon("./armies/backgrounddd.png"));
 		contentPane.add(background);
-
+		
+		
+		Image destroyedDemo = new ImageIcon(this.getClass().getResource("/rip.png")).getImage();
+		Image destroyed = destroyedDemo.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+				
+				
 		JLabel whiteSoldier1Lbl = new JLabel("");
 		Image whiteSoldier1Icn = new ImageIcon(this.getClass().getResource("/whiteArmy1.png")).getImage();
 		Image whiteSoldier1 = whiteSoldier1Icn.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
@@ -79,8 +88,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier1Lbl);
 		whiteSoldier1Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(1).getPosOnBoard() == -1)
-					ArmySlct = 1;
+				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
+				ArmySlct = 1;
 
 			}
 		});
@@ -93,8 +102,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier2Lbl);
 		whiteSoldier2Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(2).getPosOnBoard() == -1)
-					ArmySlct = 2;
+				// if (player.getArmyByNr(2).getPosOnBoard() == -1)
+				ArmySlct = 2;
 			}
 		});
 
@@ -106,8 +115,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier3Lbl);
 		whiteSoldier3Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(3).getPosOnBoard() == -1)
-					ArmySlct = 3;
+				// if (player.getArmyByNr(3).getPosOnBoard() == -1)
+				ArmySlct = 3;
 			}
 		});
 
@@ -119,8 +128,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier4Lbl);
 		whiteSoldier4Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(4).getPosOnBoard() == -1)
-					ArmySlct = 4;
+				// if (player.getArmyByNr(4).getPosOnBoard() == -1)
+				ArmySlct = 4;
 			}
 		});
 
@@ -133,7 +142,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		whiteSoldier5Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// (player.getArmyByNr(5).getPosOnBoard() == -1)
-					ArmySlct = 5;
+				ArmySlct = 5;
 			}
 		});
 
@@ -145,8 +154,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier6Lbl);
 		whiteSoldier6Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(6).getPosOnBoard() == -1)
-					ArmySlct = 6;
+				// if (player.getArmyByNr(6).getPosOnBoard() == -1)
+				ArmySlct = 6;
 			}
 		});
 
@@ -158,8 +167,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier7Lbl);
 		whiteSoldier7Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(7).getPosOnBoard() == -1)
-					ArmySlct = 7;
+				// if (player.getArmyByNr(7).getPosOnBoard() == -1)
+				ArmySlct = 7;
 			}
 		});
 
@@ -171,8 +180,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(whiteSoldier8Lbl);
 		whiteSoldier8Lbl.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				//if (player.getArmyByNr(8).getPosOnBoard() == -1)
-					ArmySlct = 8;
+				// if (player.getArmyByNr(8).getPosOnBoard() == -1)
+				ArmySlct = 8;
 			}
 		});
 
@@ -183,6 +192,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier1Lbl.setIcon(new ImageIcon(blackSoldier1));
 		blackSoldier1Lbl.setBounds(255, 562, 93, 69);
 		background.add(blackSoldier1Lbl);
+		blackSoldier1Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 1;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier1Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier2Lbl = new JLabel("");
 		Image blackSoldier2Icn = new ImageIcon(this.getClass().getResource("/blackArmy2.png")).getImage();
@@ -190,6 +210,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier2Lbl.setIcon(new ImageIcon(blackSoldier2));
 		blackSoldier2Lbl.setBounds(355, 562, 93, 69);
 		background.add(blackSoldier2Lbl);
+		blackSoldier2Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 2;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier2Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier3Lbl = new JLabel("");
 		Image blackSoldier3Icn = new ImageIcon(this.getClass().getResource("/blackArmy3.png")).getImage();
@@ -197,6 +228,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier3Lbl.setIcon(new ImageIcon(blackSoldier3));
 		blackSoldier3Lbl.setBounds(458, 562, 93, 69);
 		background.add(blackSoldier3Lbl);
+		blackSoldier3Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 3;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier3Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier4Lbl = new JLabel("");
 		Image blackSoldier4Icn = new ImageIcon(this.getClass().getResource("/blackArmy4.png")).getImage();
@@ -204,6 +246,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier4Lbl.setIcon(new ImageIcon(blackSoldier4));
 		blackSoldier4Lbl.setBounds(561, 562, 93, 69);
 		background.add(blackSoldier4Lbl);
+		blackSoldier4Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 4;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier4Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier5Lbl = new JLabel("");
 		Image blackSoldier5Icn = new ImageIcon(this.getClass().getResource("/blackArmy5.png")).getImage();
@@ -211,6 +264,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier5Lbl.setIcon(new ImageIcon(blackSoldier5));
 		blackSoldier5Lbl.setBounds(664, 562, 93, 69);
 		background.add(blackSoldier5Lbl);
+		blackSoldier5Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 5;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier5Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier6Lbl = new JLabel("");
 		Image blackSoldier6Icn = new ImageIcon(this.getClass().getResource("/blackArmy6.png")).getImage();
@@ -218,6 +282,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier6Lbl.setIcon(new ImageIcon(blackSoldier6));
 		blackSoldier6Lbl.setBounds(762, 562, 93, 69);
 		background.add(blackSoldier6Lbl);
+		blackSoldier6Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 6;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier6Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier7Lbl = new JLabel("");
 		Image blackSoldier7Icn = new ImageIcon(this.getClass().getResource("/blackArmy7.png")).getImage();
@@ -225,6 +300,17 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier7Lbl.setIcon(new ImageIcon(blackSoldier7));
 		blackSoldier7Lbl.setBounds(861, 562, 93, 69);
 		background.add(blackSoldier7Lbl);
+		blackSoldier7Lbl.addMouseListener(new MouseInputAdapter() {
+
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 7;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier7Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
 		JLabel blackSoldier8Lbl = new JLabel("");
 		Image blackSoldier8Icn = new ImageIcon(this.getClass().getResource("/blackArmy8.png")).getImage();
@@ -232,19 +318,30 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier8Lbl.setIcon(new ImageIcon(blackSoldier8));
 		blackSoldier8Lbl.setBounds(958, 562, 93, 69);
 		background.add(blackSoldier8Lbl);
+		blackSoldier8Lbl.addMouseListener(new MouseInputAdapter() {
 
-		ArrayList<JLabel> whiteArmy = new ArrayList<JLabel>(
-				Arrays.asList(whiteSoldier1Lbl, whiteSoldier2Lbl, whiteSoldier3Lbl, whiteSoldier4Lbl, whiteSoldier5Lbl,
-						whiteSoldier6Lbl, whiteSoldier7Lbl, whiteSoldier8Lbl));
+			public void mouseClicked(MouseEvent e) {
+				BlackSlct = 8;
+				removeBlack(blackArmy, BlackSlct);
+				// if (roundsPlayed == 8) {
+				// call the method for destroying the soldier
+				blackSoldier8Lbl.setIcon(new ImageIcon(destroyed));
+				// }
+			}
+		});
 
-		ArrayList<JLabel> blackArmy = new ArrayList<JLabel>(
-				Arrays.asList(blackSoldier1Lbl, blackSoldier2Lbl, blackSoldier3Lbl, blackSoldier4Lbl, blackSoldier5Lbl,
-						blackSoldier6Lbl, blackSoldier7Lbl, blackSoldier8Lbl));
+		whiteArmy.addAll(Arrays.asList(whiteSoldier1Lbl, whiteSoldier2Lbl, whiteSoldier3Lbl, whiteSoldier4Lbl,
+				whiteSoldier5Lbl, whiteSoldier6Lbl, whiteSoldier7Lbl, whiteSoldier8Lbl));
+
+		blackArmy.addAll(Arrays.asList(blackSoldier1Lbl, blackSoldier2Lbl, blackSoldier3Lbl, blackSoldier4Lbl,
+				blackSoldier5Lbl, blackSoldier6Lbl, blackSoldier7Lbl, blackSoldier8Lbl));
 
 		int widthBoard = 89;
 		int heightBoard = 100;
 		int yBoard = 284;
-// fields of war
+
+		// fields of war
+
 		JLabel position1 = new JLabel("");
 		Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3);
 		position1.setBorder(border);
@@ -253,7 +350,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position1.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(1, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(1, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -264,7 +361,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position2.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(2).getPosOnBoard() == -1)
-				placeArmy(2, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(2, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -275,7 +372,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position3.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(3, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(3, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -286,7 +383,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position4.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(4, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(4, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -297,7 +394,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position5.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(5, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(5, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -308,7 +405,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position6.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(6, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(6, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -319,7 +416,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position7.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(7, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(7, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -330,7 +427,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position8.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(8, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(8, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -341,7 +438,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position9.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(9, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(9, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -351,7 +448,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(position10);
 		position10.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				placeArmy(10, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(10, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -361,7 +458,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(position11);
 		position11.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				placeArmy(11, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(11, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -371,7 +468,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(position12);
 		position12.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				placeArmy(12, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(12, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -381,7 +478,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		background.add(position13);
 		position13.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				placeArmy(13, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(13, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -392,7 +489,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position14.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(14, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(14, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -403,7 +500,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position15.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(15, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(15, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -414,7 +511,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		position16.addMouseListener(new MouseInputAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				/// if (player.getArmyByNr(1).getPosOnBoard() == -1)
-				placeArmy(16, ArmySlct, whiteArmy, blackArmy);
+				placeArmy(16, ArmySlct, whiteArmy, blackArmy, roundsPlayed);
 			}
 		});
 
@@ -490,7 +587,8 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 	}
 
-	public void placeArmy(int i, int armySlct, ArrayList<JLabel> whiteArmy, ArrayList<JLabel> blackArmy) {
+	public void placeArmy(int i, int armySlct, ArrayList<JLabel> whiteArmy, ArrayList<JLabel> blackArmy,
+			int roundsPlayed) {
 		switch (armySlct) {
 		case 1:
 			moveToBoard(whiteArmy.get(0), i, turn);
@@ -545,12 +643,15 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 			break;
 		}
 
-		for (int j = 0; j < board.getLength(); j++) {
-			System.out.print(j);
-		}
 		// if(turn == false) {
 		blackDeploy(blackArmy, blackDeployed);
 		// }
+
+		for (int j = 0; j < board.getLength(); j++) {
+			System.out.print(j + "");
+		}
+		roundsPlayed += 1;
+		board.toString();
 
 	}
 
@@ -559,19 +660,22 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 	public void blackDeploy(ArrayList<JLabel> blackArmy, int[] blackDeployed) {
 		int blackSelected = (int) (1 + (Math.random() * 8));
 		int placeSelected = (int) (Math.random() * 16);
-		while(checkArray(blackDeployed, blackSelected) == true) {
+		while (checkArray(blackDeployed, blackSelected) == true) {
 			blackSelected = (int) (1 + (Math.random() * 8));
 		}
-		while(checkArray(placesDeployed, placeSelected) == true) {
+		while (checkArray(placesDeployed, placeSelected) == true) {
 			placeSelected = (int) (Math.random() * 16);
 		}
 		addNumberInArray(blackDeployed, blackSelected);
 		addNumberInArray(placesDeployed, placeSelected);
+		board.addArmy(computer.getArmyByNr(blackSelected), placeSelected);
+		computer.getArmyByNr(blackSelected).setPosOnBoard(placeSelected);
 		// placeArmy();
 		placeBlackArmy(placeSelected, blackSelected, blackArmy);
-		System.out.println("Black deployed army " + blackSelected + " at pos. " + placeSelected);
+		System.out.println("Black deployed army " + blackSelected + " at pos. " + placeSelected + "\n");
 	}
 
+	// Check array if that soldier is deployed
 	public boolean checkArray(int[] blackDeployed, int selectedNumber) {
 		boolean test = false;
 		for (int element : blackDeployed) {
@@ -582,7 +686,9 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		}
 		return test;
 	}
-	
+
+	// after the soldier is deployed add its' number in the array so it won't be
+	// able to deploy again
 	public static int[] addNumberInArray(int[] blackDeployed, int blackSelected) {
 		for (int i = 0; i < blackDeployed.length; i++) {
 			if (blackDeployed[i] == 0) {
@@ -592,7 +698,6 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		}
 		return blackDeployed;
 	}
-	
 
 	public void placeBlackArmy(int placeSelected, int blackSelected, ArrayList<JLabel> blackArmy) {
 		switch (blackSelected) {
@@ -645,8 +750,44 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		} else {
 			turn = true;
 		}
+		System.out.println(turn);
 	}
 
+	public boolean removeBlack(ArrayList<JLabel> blackArmy, int blackSlct) {
+		switch (blackSlct) {
+		case 1:
+			//if(board.contains(black))
+			System.out.println("Destoyed black 1");	
+			break;
+		case 2: 
+			System.out.println("Destroy black 2");
+			break;
+		case 3:
+			System.out.println("Destroy black 3");
+			break;
+		case 4:
+			System.out.println("Destroy black 4");
+			break;
+		case 5:
+			System.out.println("Destroy black 5");
+			break;
+		case 6:
+			System.out.println("Destroy black 6");
+			break;
+		case 7:
+			System.out.println("Destroy black 7");
+			break;
+		case 8:
+			System.out.println("Destroy black 8");
+			break;
+			
+		}
+		return false;
+	}
+	
+	public void checkBlack() {
+		board.contains("black");
+	}
 	public void deploy() {
 
 	}

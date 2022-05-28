@@ -40,7 +40,6 @@ public class Player {
 	}
 	
 	public Armies getWhiteA1() {
-		System.out.println("blabla");
 		return whiteA1;
 	}
 

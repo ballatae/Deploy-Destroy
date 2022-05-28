@@ -41,6 +41,20 @@ public class Board extends GUIforgame{
 	}
 
 
+	public void contains(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+//	public void isWhite() {
+//		if(gameBoard[0] == getWhiteA1(); ) {
+//			
+//		}
+//	}
+	
+
+
+
 	
 
 }
