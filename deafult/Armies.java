@@ -1,9 +1,11 @@
 package deafult;
 
+import java.util.Arrays;
+
 public class Armies {
 	private String type;
 	private int armyNr;
-	private int posOnBoard;
+//	private int posOnBoard;
 	
 	
 	
@@ -11,7 +13,7 @@ public class Armies {
 		super();
 		this.type = type;
 		this.armyNr = armyNr;
-		this.posOnBoard = -1;
+//		this.posOnBoard = -1;
 	}
 	
 	
@@ -20,11 +22,13 @@ public class Armies {
 	}
 	
 	public void setPosOnBoard(int i) {
-		posOnBoard = i;
+//		this.posOnBoard = i;
 	}
 	
 	public int getPosOnBoard() {
-		return posOnBoard;
+//		return posOnBoard;
+		return Arrays.asList(Board.gameBoard).indexOf(this);	
+		
 	}
 	
 //	public void setArmyNr(int armyNr) {

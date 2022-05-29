@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Board extends GUIforgame{
 
-	Armies[] gameBoard = new Armies[17];
+	static public Armies[] gameBoard = new Armies[17];
 	private int size;
 
 	public Board() {
 		super();
-		size = 0;
+//		size = 0;
 	}
 	
 
@@ -32,8 +32,13 @@ public class Board extends GUIforgame{
 	public void addArmy(Armies a, int i) {
 		if(gameBoard[i] == null) {
 			gameBoard[i] = a;
-			size++;
+//			a.setPosOnBoard(i);
+//			size++;
 		}
+	}
+	
+	public int getNextArmyPosition(int position) {
+		return position + 1;
 	}
 	
 	public int getLength() {
@@ -46,15 +51,16 @@ public class Board extends GUIforgame{
 		
 	}
 	
-//	public void isWhite() {
-//		if(gameBoard[0] == getWhiteA1(); ) {
-//			
-//		}
-//	}
+	public boolean isWhite(int position) {
+		if(gameBoard[position].getType() == "white") {
+			return true;
+		}
+		return false;
+	}
 	
-
-
-
+	public int getArmyPower(int position) {
+		return gameBoard[position].getArmyNr();
+	}
 	
 
 }

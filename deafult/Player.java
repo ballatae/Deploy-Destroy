@@ -3,7 +3,7 @@ package deafult;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Player {
+public class Player extends Board{
 	Armies whiteA1 = new Armies("white", 1);
 	Armies whiteA2 = new Armies("white", 2);
 	Armies whiteA3 = new Armies("white", 3);
