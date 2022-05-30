@@ -21,7 +21,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class GUIforgame extends JFrame implements ActionListener, MouseListener {
+public class GUIforgame extends JFrame implements /* ActionListener, */ MouseListener {
 	static Random random = new Random();
 	private JPanel contentPane;
 	static Player player;
@@ -196,11 +196,12 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 1;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier1Lbl.setIcon(new ImageIcon(destroyed));
 				// }
+
 			}
 		});
 
@@ -214,7 +215,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 2;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier2Lbl.setIcon(new ImageIcon(destroyed));
@@ -232,7 +233,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 3;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier3Lbl.setIcon(new ImageIcon(destroyed));
@@ -250,7 +251,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 4;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier4Lbl.setIcon(new ImageIcon(destroyed));
@@ -268,7 +269,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 5;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier5Lbl.setIcon(new ImageIcon(destroyed));
@@ -286,7 +287,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 6;
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier6Lbl.setIcon(new ImageIcon(destroyed));
@@ -305,7 +306,7 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 7;
 
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier7Lbl.setIcon(new ImageIcon(destroyed));
@@ -320,11 +321,10 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		blackSoldier8Lbl.setBounds(958, 562, 93, 69);
 		background.add(blackSoldier8Lbl);
 		blackSoldier8Lbl.addMouseListener(new MouseInputAdapter() {
-
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 8;
 				// destroyArmy(board, 8, blackSoldier8Lbl);
-				removeBlack(blackArmy, BlackSlct, destroyed);
+				removeBlack(blackArmy, BlackSlct, destroyed, whiteArmy);
 				// if (roundsPlayed == 8) {
 				// call the method for destroying the soldier
 				// blackSoldier8Lbl.setIcon(new ImageIcon(destroyed));
@@ -519,11 +519,11 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//// TODO Auto-generated method stub
+//
+//	}
 
 	int[] placesDeployed = new int[17];
 
@@ -703,44 +703,44 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 			moveToBoard(blackArmy.get(0), placeSelected);
 //			System.out.println("1");
 //			board.addArmy(player.getArmyByNr(1), blackSelected);
-			player.getArmyByNr(1).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(1).setPosOnBoard(blackSelected);
 			break;
 		case 2:
 			moveToBoard(blackArmy.get(1), placeSelected);
 //			board.addArmy(player.getWhiteA2(i), i));
 //			board.addArmy(player.getArmyByNr(2), blackSelected);
-			player.getArmyByNr(2).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(2).setPosOnBoard(blackSelected);
 
 			break;
 		case 3:
 			moveToBoard(blackArmy.get(2), placeSelected);
 //			board.addArmy(player.getArmyByNr(3), blackSelected);
-			player.getArmyByNr(3).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(3).setPosOnBoard(blackSelected);
 			break;
 		case 4:
 			moveToBoard(blackArmy.get(3), placeSelected);
 //			board.addArmy(player.getArmyByNr(4), blackSelected);
-			player.getArmyByNr(4).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(4).setPosOnBoard(blackSelected);
 			break;
 		case 5:
 			moveToBoard(blackArmy.get(4), placeSelected);
 //			board.addArmy(player.getArmyByNr(5), blackSelected);
-			player.getArmyByNr(5).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(5).setPosOnBoard(blackSelected);
 			break;
 		case 6:
 			moveToBoard(blackArmy.get(5), placeSelected);
 //			board.addArmy(player.getArmyByNr(6), blackSelected);
-			player.getArmyByNr(6).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(6).setPosOnBoard(blackSelected);
 			break;
 		case 7:
 			moveToBoard(blackArmy.get(6), placeSelected);
 //			board.addArmy(player.getArmyByNr(7), blackSelected);
-			player.getArmyByNr(7).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(7).setPosOnBoard(blackSelected);
 			break;
 		case 8:
 			moveToBoard(blackArmy.get(7), placeSelected);
 //			board.addArmy(player.getArmyByNr(8), blackSelected);
-			player.getArmyByNr(8).setPosOnBoard(blackSelected);
+			computer.getArmyByNr(8).setPosOnBoard(blackSelected);
 			break;
 		}
 		if (turn == true) {
@@ -751,100 +751,247 @@ public class GUIforgame extends JFrame implements ActionListener, MouseListener 
 		System.out.println(turn);
 	}
 
-	public boolean removeBlack(ArrayList<JLabel> blackArmy, int blackSlct, Image destroyed) {
+	public boolean removeBlack(ArrayList<JLabel> blackArmy, int blackSlct, Image destroyed,
+			ArrayList<JLabel> whiteArmy) {
 		switch (blackSlct) {
 		case 1:
 			if (destroyBlack(1)) {
 				System.out.println("Destoyed black 1");
-				destroyArmy(board, 1, blackArmy.get(0), destroyed);
+				destroyBlackArmy(board, 1, blackArmy.get(0), destroyed, whiteArmy);
 				// blackArmy.get(0).setIcon(new ImageIcon());
 			}
 			break;
 		case 2:
 			if (destroyBlack(2)) {
 				System.out.println("Destroy black 2");
-				destroyArmy(board, 2, blackArmy.get(1), destroyed);
+				destroyBlackArmy(board, 2, blackArmy.get(1), destroyed, whiteArmy);
 				// blackArmy.get(1).setIcon(new ImageIcon());
 			}
 			break;
 		case 3:
 			if (destroyBlack(3)) {
 				System.out.println("Destroy black 3");
-				destroyArmy(board, 3, blackArmy.get(2), destroyed);
+				destroyBlackArmy(board, 3, blackArmy.get(2), destroyed, whiteArmy);
 				// 1blackArmy.get(2).setIcon(new ImageIcon());
 			}
 			break;
 		case 4:
 			if (destroyBlack(4)) {
 				System.out.println("Destroy black 4");
-				destroyArmy(board, 4, blackArmy.get(3), destroyed);
+				destroyBlackArmy(board, 4, blackArmy.get(3), destroyed, whiteArmy);
 //				blackArmy.get(3).setIcon(new ImageIcon());
 			}
 			break;
 		case 5:
 			if (destroyBlack(5)) {
 				System.out.println("Destroy black 5");
-				destroyArmy(board, 5, blackArmy.get(4), destroyed);
+				destroyBlackArmy(board, 5, blackArmy.get(4), destroyed, whiteArmy);
 //				blackArmy.get(4).setIcon(new ImageIcon());
 			}
 			break;
 		case 6:
 			if (destroyBlack(6)) {
 				System.out.println("Destroy black 6");
-				destroyArmy(board, 6, blackArmy.get(5), destroyed);
+				destroyBlackArmy(board, 6, blackArmy.get(5), destroyed, whiteArmy);
 //				blackArmy.get(5).setIcon(new ImageIcon());
 			}
 			break;
 		case 7:
 			if (destroyBlack(7)) {
 				System.out.println("Destroy black 7");
-				destroyArmy(board, 7, blackArmy.get(6), destroyed);
+				destroyBlackArmy(board, 7, blackArmy.get(6), destroyed, whiteArmy);
 //				blackArmy.get(6).setIcon(new ImageIcon());
 			}
 			break;
 		case 8:
 			if (destroyBlack(8)) {
 				System.out.println("Destroy black 8");
-				destroyArmy(board, 8, blackArmy.get(7), destroyed);
+				destroyBlackArmy(board, 8, blackArmy.get(7), destroyed, whiteArmy);
 //				blackArmy.get(7).setIcon(new ImageIcon());
 			}
 			break;
 
 		}
 		return false;
+
 	}
 
 	public boolean destroyBlack(int armySlct) {
-//		if (board.isWhite(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) && board
-//				.getArmyPower(board.getNextArmyPosition(computer.getArmyByNr(ArmySlct).getPosOnBoard())) > ArmySlct) {
+		// if
+		// (board.isAlive(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())))
+		// {
 		if (board.isWhite(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
-//			System.out.println("It can be destroyed " + " position " + computer.getArmyByNr(armySlct).getPosOnBoard());
-			return true;
+			if (board.armyPower(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) > board
+					.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
+				System.out.println("bardh: "
+						+ board.armyPower(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())));
+				System.out.println(
+						"zi: " + board.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard())));
+				computer.kill(armySlct);
+				// computer.setArmyPowerTo0(armySlct);
+//				computer.printArmyNr();
+				return true;
+
+			}
 		}
-//		System.out.println("It can not be destroyed " + " position " + computer.getArmyByNr(armySlct).getPosOnBoard());
+		// }
+		// if
+		// (board.isAlive(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())))
+		// {
+		// if (computer.getArmyByNr(armySlct).getPosOnBoard() != 1) {
+		if (board.isWhite(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
+			if (board.armyPower(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) > board
+					.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
+				System.out.println("perpara bardh: " + board
+						.armyPower(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())));
+				System.out.println(
+						"i ziu: " + board.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard())));
+				computer.kill(armySlct);
+				// computer.setArmyPowerTo0(armySlct);
+//					computer.printArmyNr();
+				return true;
+			}
+		}
+		// }
+		// }
+		// (board.isAlive(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))
+		// &&
+		// board.isAlive(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())))
+		if (board.isWhite(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))
+				&& board.isWhite(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
+			if (board.armyPower(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) + board
+					.armyPower(board.getPreviousArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) > board
+							.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
+				System.out.println("dyjat bashk e mujten");
+				computer.kill(armySlct);
+				// computer.setArmyPowerTo0(armySlct);
+//				computer.printArmyNr();
+				return true;
+			}
+		}
 		return false;
 
 	}
 
-	public void destroyArmy(Board board, int blackselected, JLabel blackSoldier1Lbl, Image destroyed) {
+	public void destroyBlackArmy(Board board, int blackselected, JLabel blackSoldier1Lbl, Image destroyed,
+			ArrayList<JLabel> whiteArmy) {
 		System.out.println("jasht");
 		if (destroyBlack(blackselected)) {
 			System.out.println("mrena");
-//			for (int i = 0; i < board.getLength(); i++) {
-//				System.out.println("mrena mreana");
-//				int nr = board.gameBoard[i].getArmyNr();
-//				int nr1 = board.gameBoard[i - 1].getArmyNr();
-//				int nr2 = board.gameBoard[i + 1].getArmyNr();
-//				if (nr == blackselected) {
-//					if (nr1 + nr2 > nr || nr1 > nr || nr2 > nr) {
 			blackSoldier1Lbl.setIcon(new ImageIcon(destroyed));
-		}
+			System.out.println("ja heka fuqin ja la 0");
 
+		}
+		removeWhite(whiteArmy, destroyed);
 	}
 
-//			}
-//		}
-//	}
+	public void destroyWhiteArmy(JLabel whiteSoldier1Lbl, int blackSelected) {
+		if (destroyWhite(blackSelected)) {
+			System.out.println("haha ta prisha ta lash 0");
+			whiteSoldier1Lbl.setIcon(new ImageIcon());
+		}
+	}
+
+	int[] whiteDestroyed = new int[8];
+
+	public boolean destroyWhite(int blackSelected) {
+
+		if (board.isBlack(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+			if (board.armyPower(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
+					.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+				System.out.println("bardh: " + board
+						.armyPower(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
+				System.out.println(
+						"zi: " + board.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
+				return true;
+			}
+		}
+
+		if (board.isBlack(board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+			if (board
+					.armyPower(board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
+							.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+				System.out.println("perpara bardh: " + board
+						.armyPower(board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
+				System.out.println("i ziu: "
+						+ board.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
+				return true;
+			}
+		}
+
+		if (board.isBlack(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))
+				&& board.isBlack(board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+			if (board.armyPower(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) + board
+					.armyPower(board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
+							.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
+				System.out.println("dyjat bashk e mujten");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean removeWhite(ArrayList<JLabel> whiteArmy, Image destroyed) {
+		int blackSelected = (int) (1 + (Math.random() * 8));
+		while (checkArray(whiteDestroyed, blackSelected) == true
+				|| computer.getArmyByNr(blackSelected).getIsAlive() == true) {
+			blackSelected = (int) (1 + (Math.random() * 8));
+//			while(computer.getArmyByNr(blackSelected).getIsAlive() != true)
+		}
+		addNumberInArray(whiteDestroyed, blackSelected);
+		switch (blackSelected) {
+		case 1:
+			if (destroyBlack(1)) {
+				System.out.println("Destoyed black 1");
+				destroyWhiteArmy(whiteArmy.get(0), 1);
+			}
+			break;
+		case 2:
+			if (destroyBlack(2)) {
+				System.out.println("Destroy black 2");
+				destroyWhiteArmy(whiteArmy.get(1), 2);
+			}
+			break;
+		case 3:
+			if (destroyBlack(3)) {
+				System.out.println("Destroy black 3");
+				destroyWhiteArmy(whiteArmy.get(2), 3);
+			}
+			break;
+		case 4:
+			if (destroyBlack(4)) {
+				System.out.println("Destroy black 4");
+				destroyWhiteArmy(whiteArmy.get(3), 4);
+			}
+			break;
+		case 5:
+			if (destroyBlack(5)) {
+				System.out.println("Destroy black 5");
+				destroyWhiteArmy(whiteArmy.get(4), 5);
+			}
+			break;
+		case 6:
+			if (destroyBlack(6)) {
+				System.out.println("Destroy black 6");
+				destroyWhiteArmy(whiteArmy.get(5), 6);
+			}
+			break;
+		case 7:
+			if (destroyBlack(7)) {
+				System.out.println("Destroy black 7");
+				destroyWhiteArmy(whiteArmy.get(6), 7);
+			}
+			break;
+		case 8:
+			if (destroyBlack(8)) {
+				System.out.println("Destroy black 8");
+				destroyWhiteArmy(whiteArmy.get(7), 8);
+			}
+			break;
+
+		}
+		return false;
+	}
 
 	public void deploy() {
 

@@ -5,17 +5,28 @@ import java.util.Arrays;
 public class Armies {
 	private String type;
 	private int armyNr;
+	private boolean isAlive;
+	
 //	private int posOnBoard;
 	
 	
+
 	
-	public Armies(String type, int armyNr) {
+	public Armies(String type, int armyNr, boolean isAlive) {
+		// TODO Auto-generated constructor stub
 		super();
 		this.type = type;
 		this.armyNr = armyNr;
-//		this.posOnBoard = -1;
+		this.isAlive = isAlive;
+	}
+
+	public boolean getIsAlive() {
+		return isAlive;
 	}
 	
+	public boolean setIsAlive(boolean isAlive) {
+		return this.isAlive = isAlive;
+	}
 	
 	public int getArmyNr() {
 		return armyNr;
@@ -44,6 +55,10 @@ public class Armies {
 //	public void setType(String type) {
 //		this.type = type;
 //	}
+
+	public void setArmyNr(int armyNr) {
+		this.armyNr = armyNr;
+	}
 	
 	
 }

@@ -3,15 +3,15 @@ package deafult;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Computer extends Board{
-	Armies blackA1 = new Armies("black", 1);
-	Armies blackA2 = new Armies("black", 2);
-	Armies blackA3 = new Armies("black", 3);
-	Armies blackA4 = new Armies("black", 4);
-	Armies blackA5 = new Armies("black", 5);
-	Armies blackA6 = new Armies("black", 6);
-	Armies blackA7 = new Armies("black", 7);
-	Armies blackA8 = new Armies("black", 8);
+public class Computer extends Board {
+	Armies blackA1 = new Armies("black", 1, true);
+	Armies blackA2 = new Armies("black", 2, true);
+	Armies blackA3 = new Armies("black", 3, true);
+	Armies blackA4 = new Armies("black", 4, true);
+	Armies blackA5 = new Armies("black", 5, true);
+	Armies blackA6 = new Armies("black", 6, true);
+	Armies blackA7 = new Armies("black", 7, true);
+	Armies blackA8 = new Armies("black", 8, true);
 
 	ArrayList<Armies> availableBlack = new ArrayList<Armies>(
 			Arrays.asList(blackA1, blackA2, blackA3, blackA4, blackA5, blackA6, blackA7, blackA8));
@@ -30,6 +30,17 @@ public class Computer extends Board{
 
 	public Armies getArmyPosition(int pos) {
 		return availableBlack.get(pos);
+	}
+	
+	public void kill(int n) {
+		getArmyByNr(n).setIsAlive(false);
+		System.out.println("diq booommmm");
+		System.out.println(getArmyByNr(n).getIsAlive());
+		
+	}
+
+	public void setArmyPowerTo0(int nr) {
+		getArmyByNr(nr).setArmyNr(0);
 	}
 
 	public Armies getBlackA1() {
@@ -103,6 +114,14 @@ public class Computer extends Board{
 			}
 		}
 		return null;
+	}
+
+	public String printArmyNr() {
+		String armyPowers = " ";
+		for (int i = 0; i < availableBlack.size(); i++) {
+			armyPowers = armyPowers + " ";
+		}
+		return armyPowers;
 	}
 
 }

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Player extends Board{
-	Armies whiteA1 = new Armies("white", 1);
-	Armies whiteA2 = new Armies("white", 2);
-	Armies whiteA3 = new Armies("white", 3);
-	Armies whiteA4 = new Armies("white", 4);
-	Armies whiteA5 = new Armies("white", 5);
-	Armies whiteA6 = new Armies("white", 6);
-	Armies whiteA7 = new Armies("white", 7);
-	Armies whiteA8 = new Armies("white", 8);
+	Armies whiteA1 = new Armies("white", 1, true);
+	Armies whiteA2 = new Armies("white", 2, true);
+	Armies whiteA3 = new Armies("white", 3, true);
+	Armies whiteA4 = new Armies("white", 4, true);
+	Armies whiteA5 = new Armies("white", 5, true);
+	Armies whiteA6 = new Armies("white", 6, true);
+	Armies whiteA7 = new Armies("white", 7, true);
+	Armies whiteA8 = new Armies("white", 8, true);
 
 	ArrayList<Armies> availableArmies = new ArrayList<Armies>(
 			Arrays.asList(whiteA1, whiteA2, whiteA3, whiteA4, whiteA5, whiteA6, whiteA7, whiteA8));
@@ -110,6 +110,14 @@ public class Player extends Board{
 			}
 		}
 		return null;
+	}
+	
+	public String printArmyNr() {
+		String armyPowers = " ";
+		for(int i = 0; i < availableArmies.size(); i++) {
+			armyPowers = armyPowers + " ";
+		}
+		return armyPowers;
 	}
 
 }
