@@ -21,11 +21,11 @@ public class Armies {
 	}
 
 	public boolean getIsAlive() {
-		return isAlive;
+		return this.isAlive;
 	}
 	
-	public boolean setIsAlive(boolean isAlive) {
-		return this.isAlive = isAlive;
+	public void setIsAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 	
 	public int getArmyNr() {
@@ -37,27 +37,22 @@ public class Armies {
 	}
 	
 	public int getPosOnBoard() {
-//		return posOnBoard;
 		return Arrays.asList(Board.gameBoard).indexOf(this);	
 		
 	}
 	
-//	public void setArmyNr(int armyNr) {
-//		this.armyNr = armyNr;
-//	}
-//
-//
+
 	public String getType() {
 		return type;
 	}
-//
-//
-//	public void setType(String type) {
-//		this.type = type;
-//	}
 
 	public void setArmyNr(int armyNr) {
 		this.armyNr = armyNr;
+	}
+	
+	public void disableArmy() {
+		this.armyNr = 0;
+		System.out.println("Disable army" + this.armyNr);
 	}
 	
 	

@@ -3,7 +3,8 @@ package deafult;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Player extends Board{
+public class Player extends Board {
+	Armies white17 = new Armies("white", 0, true);
 	Armies whiteA1 = new Armies("white", 1, true);
 	Armies whiteA2 = new Armies("white", 2, true);
 	Armies whiteA3 = new Armies("white", 3, true);
@@ -18,7 +19,6 @@ public class Player extends Board{
 
 	public Player() {
 		super();
-//		this.availableArmies = availableArmies;
 	}
 
 	public ArrayList<Armies> getAvailableArmies() {
@@ -28,93 +28,32 @@ public class Player extends Board{
 	public void setAvailableArmies(ArrayList<Armies> availableArmies) {
 		this.availableArmies = availableArmies;
 	}
-	
-	public void getArmy(int pos) {
-		
-		
-		System.out.println("5");
-	}
-	
+
 	public Armies getArmyPosition(int pos) {
 		return availableArmies.get(pos);
 	}
-	
-	public Armies getWhiteA1() {
-		return whiteA1;
-	}
 
-	public void setWhiteA1(Armies whiteA1) {
-		this.whiteA1 = whiteA1;
-	}
-
-	public Armies getWhiteA2() {
-		return whiteA2;
-	}
-
-	public void setWhiteA2(Armies whiteA2) {
-		this.whiteA2 = whiteA2;
-	}
-
-	public Armies getWhiteA3() {
-		return whiteA3;
-	}
-
-	public void setWhiteA3(Armies whiteA3) {
-		this.whiteA3 = whiteA3;
-	}
-
-	public Armies getWhiteA4() {
-		return whiteA4;
-	}
-
-	public void setWhiteA4(Armies whiteA4) {
-		this.whiteA4 = whiteA4;
-	}
-
-	public Armies getWhiteA5() {
-		return whiteA5;
-	}
-
-	public void setWhiteA5(Armies whiteA5) {
-		this.whiteA5 = whiteA5;
-	}
-
-	public Armies getWhiteA6() {
-		return whiteA6;
-	}
-
-	public void setWhiteA6(Armies whiteA6) {
-		this.whiteA6 = whiteA6;
-	}
-
-	public Armies getWhiteA7() {
-		return whiteA7;
-	}
-
-	public void setWhiteA7(Armies whiteA7) {
-		this.whiteA7 = whiteA7;
-	}
-
-	public Armies getWhiteA8() {
-		return whiteA8;
-	}
-
-	public void setWhiteA8(Armies whiteA8) {
-		this.whiteA8 = whiteA8;
-	}
-	
 	public Armies getArmyByNr(int number) {
-		for(int i = 0; i < availableArmies.size(); i++) {
-			if(availableArmies.get(i).getArmyNr() == number) {
+		for (int i = 0; i < availableArmies.size(); i++) {
+			if (availableArmies.get(i).getArmyNr() == number) {
 				return availableArmies.get(i);
 			}
 		}
 		return null;
 	}
-	
+
+	public void destroy(int n) {
+		if (getArmyByNr(n).getIsAlive() == true) {
+			getArmyByNr(n).setIsAlive(false);
+		}
+		System.out.println("I killed yor warrior: " + n + "\n");
+		System.out.println(getArmyByNr(n).getIsAlive());
+
+	}
+
 	public String printArmyNr() {
 		String armyPowers = " ";
-		for(int i = 0; i < availableArmies.size(); i++) {
+		for (int i = 0; i < availableArmies.size(); i++) {
 			armyPowers = armyPowers + " ";
 		}
 		return armyPowers;

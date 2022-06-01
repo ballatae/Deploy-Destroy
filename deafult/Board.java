@@ -5,34 +5,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Board extends GUIforgame {
+public class Board extends deployDestroyGUI {
 
-	static public Armies[] gameBoard = new Armies[17];
+	static public Armies[] gameBoard = new Armies[20];
 	private int size;
+	Armies white17 = new Armies("white", 0, false);
+	Armies white18 = new Armies("white", 0, false);
 
 	public Board() {
 		super();
-//		size = 0;
-	}
-
-	@Override
-	public String toString() {
-		return "Board [gameBoard=" + gameBoard.toString() + "]";
+		gameBoard[0] = (this.white17);
+		gameBoard[17] = (this.white18);
 	}
 
 	public Armies[] getGameBoard() {
 		return gameBoard;
 	}
 
-	public void setGameBoard(Armies[] gameBoard) {
-		this.gameBoard = gameBoard;
-	}
-
 	public void addArmy(Armies a, int i) {
 		if (gameBoard[i] == null) {
 			gameBoard[i] = a;
-//			a.setPosOnBoard(i);
-//			size++;
 		}
 	}
 
@@ -63,12 +55,9 @@ public class Board extends GUIforgame {
 		}
 		return false;
 	}
-	
+
 	public boolean isAlive(int position) {
-		if (gameBoard[position].getIsAlive() == true){
-			return true;
-		}
-		return false;
+		return gameBoard[position].getIsAlive();
 	}
 
 	public boolean isBlack(int position) {
