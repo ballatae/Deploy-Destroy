@@ -6,14 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import deafult.Player;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.BorderFactory;
 import javax.swing.*;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputAdapter;
 
@@ -21,30 +16,34 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DeployDestroyGUI extends JFrame implements MouseListener {
+public class DeployDestroy extends JFrame implements MouseListener {
 	static Random random = new Random();
-	private JPanel contentPane;
+	CardLayout cardLayout;
+	JPanel mainPanel;
+	JPanel contentPane;
+	JPanel startGame;
 	static Player player;
 	static Computer computer;
 	static Board board;
 	private boolean turn;
 	static int ArmySlct = 0;
 	static int BlackSlct = 0;
+	static DeployDestroy maingame;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		player = new Player();
 		computer = new Computer();
 		board = new Board();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-
-					DeployDestroyGUI frame = new DeployDestroyGUI();
-					frame.setVisible(true);
-					frame.setResizable(false);
+					maingame = new DeployDestroy();
+					maingame.setVisible(true);
+					maingame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,7 +54,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 	/**
 	 * Create the frame.
 	 */
-	public DeployDestroyGUI() {
+	public DeployDestroy() {
+
 		turn = true;
 		int width = 90;
 		int height = 75;
@@ -69,7 +69,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 		ArrayList<JLabel> whiteArmy = new ArrayList<JLabel>();
 		ArrayList<JLabel> blackArmy = new ArrayList<JLabel>();
 
-		JLabel background = new JLabel("New label");
+		JLabel background = new JLabel("");
+
 		background.setBounds(0, 0, 1370, 650);
 		background.setHorizontalAlignment(SwingConstants.CENTER);
 		background.setIcon(new ImageIcon("./armies/backgrounddd.png"));
@@ -92,7 +93,7 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 				ArmySlct = 1;
 				System.out.println("Board qysh jon i kan fuqit ren :  " + getBoard());
 				System.out.println("Board qysh jon poisitonet ren : " + getBoardPos());
-				System.out.println("e murrem jeten e sclt" + merreJeten());
+//				checkWinner();
 //				computer.printPowerAlive();
 
 			}
@@ -194,7 +195,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 1;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
-
+				whiteCanPlay();
+//				checkWinner();
 			}
 		});
 
@@ -209,7 +211,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 2;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
-
+				whiteCanPlay();
+//				checkWinner();
 			}
 		});
 
@@ -224,6 +227,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 3;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+				// checkWinner();
 			}
 		});
 
@@ -238,6 +243,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 4;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+//				checkWinner();
 
 			}
 		});
@@ -253,6 +260,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 5;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+				// checkWinner();
 
 			}
 		});
@@ -268,6 +277,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 6;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+//				checkWinner();
 			}
 		});
 
@@ -282,6 +293,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 7;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+//				checkWinner();
 			}
 		});
 
@@ -295,6 +308,8 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			public void mouseClicked(MouseEvent e) {
 				BlackSlct = 8;
 				removeBlack(blackArmy, BlackSlct, destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				whiteCanPlay();
+//				checkWinner();
 			}
 		});
 
@@ -472,6 +487,21 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			}
 		});
 
+//		JLabel startBackground = new JLabel("");
+//		startBackground.setBounds(0, 0, 1350, 645);
+//		startBackground.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\startG.jpg"));
+//		contentPane.add(startBackground);
+//		
+//		JButton btnNewButton = new JButton("");
+//		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\startButton.jpg"));
+//		btnNewButton.setBounds(479, 500, 391, 100);
+//		startBackground.add(btnNewButton);
+//	    btnNewButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				goToMain(e);
+//			}
+//		});
+
 	}
 
 //	@Override
@@ -589,14 +619,9 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			addNumberInArray(placesDeployed, i);
 			break;
 		}
-
-		// if(turn == false) {
+		
 		blackDeploy(blackArmy, blackDeployed);
-		// }
 
-//		for (int j = 0; j < board.getLength(); j++) {
-//			System.out.print(j + "");
-//		}
 		roundsPlayed += 1;
 		board.toString();
 
@@ -701,17 +726,16 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 	}
 
 	// maron deploy ja nis destroy
-	// maini per d
 	public boolean removeBlack(ArrayList<JLabel> blackArmy, int blackSlct, Image destroyedBlackImg,
 			Image destroyedWhiteImg, ArrayList<JLabel> whiteArmy) {
 		switch (blackSlct) {
 		case 1:
 			if (destroyBlack(1)) {
 				System.out.println("Destoyed black 1");
-//				destroyBlackArmy(board, 1, blackArmy.get(0), destroyedBlackImg, destroyedWhiteImg, whiteArmy);
+				destroyBlackArmy(board, 1, blackArmy.get(0), destroyedBlackImg, destroyedWhiteImg, whiteArmy);
 
 				blackArmy.get(0).setIcon(new ImageIcon(destroyedBlackImg));
-				removeWhite(whiteArmy, destroyedWhiteImg);
+				// removeWhite(whiteArmy, destroyedWhiteImg);
 
 				// blackArmy.get(0).setIcon(new ImageIcon());
 			}
@@ -774,7 +798,6 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 	public boolean destroyBlack(int armySlct) {
 
 		if (board.isWhite(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
-
 			if (board.isAlive(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
 				if (board.armyPower(board.getNextArmyPosition(computer.getArmyByNr(armySlct).getPosOnBoard())) > board
 						.armyPower(board.getPosition(computer.getArmyByNr(armySlct).getPosOnBoard()))) {
@@ -823,16 +846,16 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 
 	public void destroyBlackArmy(Board board, int blackselected, JLabel blackSoldier1Lbl, Image destroyedBlackImg,
 			Image destroyedWhiteImg, ArrayList<JLabel> whiteArmy) {
-		System.out.println("jasht");
-
 		if (destroyBlack(blackselected)) {
-			System.out.println("mrena");
 			blackSoldier1Lbl.setIcon(new ImageIcon(destroyedBlackImg));
-			System.out.println("ja heka fuqin ja la 0");
-
+		}
+		if (blackCanPlay()) {
+			removeWhite(whiteArmy, destroyedWhiteImg);
+		}
+		if (!blackCanPlay() && !whiteCanPlay()) {
+			System.out.println("someone won");
 		}
 
-		removeWhite(whiteArmy, destroyedWhiteImg);
 	}
 
 	public void destroyWhiteArmy(JLabel whiteSoldier1Lbl, int blackSelected, Image destroyedWhiteImg) {
@@ -849,10 +872,6 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 				if (board
 						.armyPower(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
 								.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
-//					System.out.println("bardh: " + board
-//							.armyPower(board.getNextArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
-//					System.out.println("zi: "
-//							+ board.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
 					player.destroy(blackSelected);
 					return true;
 				}
@@ -864,10 +883,6 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 				if (board.armyPower(
 						board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
 								.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
-//					System.out.println("perpara bardh: " + board.armyPower(
-//							board.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
-//					System.out.println("i ziu: "
-//							+ board.armyPower(board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard())));
 					player.destroy(blackSelected);
 					return true;
 				}
@@ -883,7 +898,7 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 								.getPreviousArmyPosition(player.getArmyByNr(blackSelected).getPosOnBoard())) > board
 										.armyPower(
 												board.getPosition(player.getArmyByNr(blackSelected).getPosOnBoard()))) {
-//					System.out.println("dyjat bashk e mujten");
+
 					player.destroy(blackSelected);
 					return true;
 				}
@@ -910,23 +925,20 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 	static int[] whiteDestroyed = new int[8];
 	public static int num = 0;
 
-	public boolean removeWhite(ArrayList<JLabel> whiteArmy, Image destroyedWhiteImg) {
-
-		// addNumberInArray(whiteDestroyed, blackSelected);
+	public void removeWhite(ArrayList<JLabel> whiteArmy, Image destroyedWhiteImg) {
 		int randomWhite = (int) (1 + (Math.random() * 8));
-		if (num < 7) {
+		if (num < 8) {
 			if (destroyWhite(randomWhite) == true && !checkArray(whiteDestroyed, randomWhite)) {
 				System.out.println("e zgedha kopa " + randomWhite);
 				addNumberInArray(whiteDestroyed, randomWhite);
 			} else {
-				removeWhite(whiteArmy, destroyedWhiteImg);
 				num++;
-
+				removeWhite(whiteArmy, destroyedWhiteImg);
 			}
 		} else {
-			whiteCanNotPlay();
+			canNotPlay();
+			checkWinner();
 		}
-
 		switch (randomWhite) {
 		case 1:
 			if (destroyWhite(1)) {
@@ -977,11 +989,12 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 			}
 			break;
 		}
+//		}
+		onlyBlackPlays(whiteArmy, destroyedWhiteImg);
+//		if (!blackCanPlay() && !whiteCanPlay()) {
+//			System.out.println("njoni qitash fitoj");
+//		}
 
-		System.out.println("u kry e prishnja - sdi a boni");
-		// removeWhite(whiteArmy, destroyedWhiteImg);
-
-		return false;
 	}
 
 	public void deploy() {
@@ -1014,30 +1027,104 @@ public class DeployDestroyGUI extends JFrame implements MouseListener {
 
 	}
 
-	public String merreJeten() {
-		String a = "";
-		for (int i = 0; i < 17; i++) {
-			if (Board.gameBoard[i] != null)
-				a = a + Board.gameBoard[i].getIsAlive() + " ";
-		}
-		return a;
+	public void canNotPlay() {
+		System.out.println("Hello sun luj ");
 	}
 
-	public void whiteCanNotPlay() {
-		System.out.println("Hello");
-	}
-
-	public boolean gameEndedForBlack() {
-		int count = 0;
+	public boolean blackCanPlay() {
 		for (int i = 1; i <= 8; i++) {
-			if (!destroyWhite(i)) {
-				count++;
-				if (count == 8) {
-					return true;
-				}
+			if (destroyWhite(i)) {
+				return true;
 			}
 		}
 		return false;
+	}
+
+	public boolean whiteCanPlay() {
+		for (int i = 1; i <= 8; i++) {
+			if (destroyBlack(i)) {
+				System.out.println("sbonnnnn mooooooo");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int checkAliveBlack() {
+		int aliveBlack = 0;
+		for (int i = 1; i < 9; i++) {
+			if (computer.getArmyByNr(i).getIsAlive()) {
+				aliveBlack++;
+			}
+		}
+		return aliveBlack;
+	}
+
+	public int checkAliveWhite() {
+		int aliveWhite = 0;
+		for (int i = 1; i < 9; i++) {
+			if (player.getArmyByNr(i).getIsAlive()) {
+
+				aliveWhite++;
+			}
+		}
+		return aliveWhite;
+	}
+
+	public void checkWinner() {
+//		if (whiteCanPlay() == false) {
+			if (checkAliveWhite() > checkAliveBlack()) {
+				System.out.println("white Army won the game");
+				gameWon(maingame);
+			} else if (checkAliveWhite() < checkAliveBlack()) {
+				System.out.println("black Army won the game ");
+				gameLost(maingame);
+			} else if (whiteArmyPowerLeft() > blackArmyPowerLeft()) {
+				System.out.println("White won by power");
+				gameWon(maingame);
+			} else if (whiteArmyPowerLeft() < blackArmyPowerLeft()) {
+				System.out.println("Black won by power");
+				gameLost(maingame);
+			} else {
+				System.out.println("It's a tie");
+			}
+//		}
+	}
+
+	public int whiteArmyPowerLeft() {
+		int aliveWhitePower = 0;
+		for (int i = 1; i < 9; i++) {
+			if (player.getArmyByNr(i).getIsAlive()) {
+				aliveWhitePower += player.getArmyByNr(i).getArmyNr();
+			}
+		}
+		return aliveWhitePower;
+	}
+
+	public void onlyBlackPlays(ArrayList<JLabel> whiteArmy, Image destroyedWhiteImg) {
+		if (!whiteCanPlay()) {
+			removeWhite(whiteArmy, destroyedWhiteImg);
+		}
+	}
+
+	public int blackArmyPowerLeft() {
+		int aliveBlackPower = 0;
+		for (int i = 1; i < 9; i++) {
+			if (computer.getArmyByNr(i).getIsAlive()) {
+				aliveBlackPower += computer.getArmyByNr(i).getArmyNr();
+			}
+		}
+		return aliveBlackPower;
+	}
+
+	public void gameWon(JFrame frame) {
+		frame.dispose();
+		WhiteWinner.main(null);
+	}
+
+	public void gameLost(JFrame frame) {
+		frame.dispose();
+		BlackWinner.main(null);
 	}
 
 	@Override
