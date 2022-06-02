@@ -21,7 +21,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class deployDestroyGUI extends JFrame implements MouseListener {
+public class DeployDestroyGUI extends JFrame implements MouseListener {
 	static Random random = new Random();
 	private JPanel contentPane;
 	static Player player;
@@ -42,7 +42,7 @@ public class deployDestroyGUI extends JFrame implements MouseListener {
 			public void run() {
 				try {
 
-					deployDestroyGUI frame = new deployDestroyGUI();
+					DeployDestroyGUI frame = new DeployDestroyGUI();
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -55,7 +55,7 @@ public class deployDestroyGUI extends JFrame implements MouseListener {
 	/**
 	 * Create the frame.
 	 */
-	public deployDestroyGUI() {
+	public DeployDestroyGUI() {
 		turn = true;
 		int width = 90;
 		int height = 75;

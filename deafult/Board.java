@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Board extends deployDestroyGUI {
+public class Board extends DeployDestroyGUI {
 
 	static public Armies[] gameBoard = new Armies[20];
 	private int size;
