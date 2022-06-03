@@ -838,7 +838,6 @@ public class DeployDestroy extends JFrame implements MouseListener {
 		int randomWhite = (int) (1 + (Math.random() * 8));
 		if (num < 8) {
 			if (whiteDestroyable(randomWhite) == true && !checkArray(whiteDestroyed, randomWhite)) {
-				System.out.println("e zgedha kopa " + randomWhite);
 				addNumberInArray(whiteDestroyed, randomWhite);
 			} else {
 				num++;
