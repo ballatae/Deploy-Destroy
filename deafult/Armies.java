@@ -7,11 +7,6 @@ public class Armies {
 	private int armyNr;
 	private boolean isAlive;
 	
-//	private int posOnBoard;
-	
-	
-
-	
 	public Armies(String type, int armyNr, boolean isAlive) {
 		// TODO Auto-generated constructor stub
 		super();

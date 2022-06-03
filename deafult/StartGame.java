@@ -15,7 +15,6 @@ public class StartGame extends JFrame {
 
 	CoinToss coinToss;
 	JPanel startGame;
-
 	static StartGame frame;
 
 	/**
