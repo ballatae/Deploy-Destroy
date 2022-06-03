@@ -96,7 +96,8 @@ public class CoinToss extends JFrame implements ActionListener {
 					continuebtn.setVisible(true);
 				} else {
 					coinDisplayed.setIcon(new ImageIcon(blackCoin));
-					coinDisplayed.setBounds(490, 150, 330, 350);
+					btnNewButton.setVisible(false);
+					continuebtn.setVisible(true);
 				}
 			}
 		});
