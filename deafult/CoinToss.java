@@ -58,6 +58,7 @@ public class CoinToss extends JFrame implements ActionListener {
 		setContentPane(coinPanel);
 		coinPanel.setLayout(null);
 
+		//<a href="http://www.freepik.com">Designed by vectorpocket / Freepik</a>
 		JLabel background = new JLabel("");
 		background.setBounds(0, 0, 1350, 645);
 		background.setIcon(new ImageIcon("./background/coinBackground.jpg"));
