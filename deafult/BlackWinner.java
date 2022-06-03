@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class BlackWinner extends JFrame {
-	//DeployDestroy contentPane;
+	// DeployDestroy contentPane;
 	JPanel startGame;
 	CoinToss cointoss;
 	static BlackWinner blackWinner;
@@ -50,6 +50,7 @@ public class BlackWinner extends JFrame {
 		setContentPane(startGame);
 		startGame.setLayout(null);
 
+//		background link <a href="http://www.freepik.com">Designed by vectorpouch / Freepik</a>
 		JLabel background = new JLabel("");
 		background.setBounds(0, 0, 1350, 645);
 		background.setIcon(new ImageIcon("./background/youLost.jpg"));
@@ -64,7 +65,7 @@ public class BlackWinner extends JFrame {
 				gameOn(blackWinner);
 			}
 		});
-		
+
 		JButton quitGame = new JButton("");
 		quitGame.setIcon(new ImageIcon("./background/quitGame.jpg"));
 		quitGame.setBounds(685, 530, 300, 77);
@@ -80,7 +81,7 @@ public class BlackWinner extends JFrame {
 		blackWinner.dispose();
 		CoinToss.main(null);
 	}
-	
+
 	public void close(JFrame blackWinner) {
 		blackWinner.dispose();
 	}

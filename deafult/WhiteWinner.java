@@ -50,7 +50,7 @@ public class WhiteWinner extends JFrame {
 		startGame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(startGame);
 		startGame.setLayout(null);
-
+//		background link <a href="http://www.freepik.com">Designed by vectorpouch / Freepik</a>
 		JLabel background = new JLabel("");
 		background.setBounds(0, 0, 1350, 645);
 		background.setIcon(new ImageIcon("./background/youWon.jpg"));
